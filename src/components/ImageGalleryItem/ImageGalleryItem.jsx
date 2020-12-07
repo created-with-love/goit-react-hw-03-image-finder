@@ -1,10 +1,9 @@
 import React from 'react';
 import './ImageGalleryItem.css';
 
-export default function ImageGalleryItem(props) {
-  const { id, webformatURL, largeImageURL } = props;
+export default function ImageGalleryItem({ id, webformatURL, largeImageURL }) {
   return (
-    <li className="ImageGalleryItem" key={id}>
+    <li className="ImageGalleryItem" key={`id-${id}`}>
       <img
         src={webformatURL}
         alt="searchedPicture"
