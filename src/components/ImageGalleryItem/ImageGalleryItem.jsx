@@ -1,19 +1,22 @@
 import React from 'react';
 import './ImageGalleryItem.css';
+import authContext from '../Context';
+import 'lazysizes';
 
-export default function ImageGalleryItem(
-  { id, webformatURL, largeImageURL },
-  onClick,
-) {
+export default function ImageGalleryItem({ id, webformatURL, largeImageURL }) {
   return (
     <li className="ImageGalleryItem" key={`id-${id}`}>
-      <img
-        src={webformatURL}
-        alt="searchedPicture"
-        data-large={largeImageURL}
-        className="ImageGalleryItem-image"
-        onClick={onClick}
-      />
+      <authContext.Consumer>
+        {hadleImageClick => (
+          <img
+            data-src={webformatURL}
+            alt="searchedPicture"
+            data-large={largeImageURL}
+            className="ImageGalleryItem-image lazyload"
+            onClick={hadleImageClick}
+          />
+        )}
+      </authContext.Consumer>
     </li>
   );
 }
