@@ -25,9 +25,10 @@
 
 .Modal__close {
   position: fixed;
-  background-color: rgb(170, 170, 170);
+  background-color: rgba(170, 170, 170, 0.8);
   top: -25px;
   left: 85%;
+  z-index: 2;
 }
 
 @media (max-width: 350px) {

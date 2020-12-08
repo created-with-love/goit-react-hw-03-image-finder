@@ -3,6 +3,7 @@ import './Searchbar.css';
 import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
+import logo from '../../icons/sns.svg';
 
 export default class Searchbar extends Component {
   state = {
@@ -32,6 +33,10 @@ export default class Searchbar extends Component {
 
     return (
       <header className="Searchbar">
+        <div className="logobox">
+          <img src={logo} alt="sns" width="20" className="logobox__img" />
+          <span className="logobox__text">Search and Save</span>
+        </div>
         <form className="SearchForm" onSubmit={this.handleSubmit}>
           <button type="submit" className="SearchForm-button">
             <span className="SearchForm-button-label">Search</span>
