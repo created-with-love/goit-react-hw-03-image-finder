@@ -87,7 +87,7 @@ export default class App extends Component {
     e.preventDefault();
 
     const fullImgLink = e.target.getAttribute('data-large');
-    const lowSrc = e.target.getCssValue('src');
+    const lowSrc = e.target.getAttribute('src');
 
     this.setState({
       selectedImgURL: fullImgLink,
