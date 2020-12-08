@@ -8,6 +8,7 @@ import ImageGallery from './components/ImageGallery';
 import Section from './components/Section';
 import Modal from './components/Modal';
 import authContext from './components/Context';
+import 'lazysizes';
 
 export default class App extends Component {
   state = {
@@ -17,6 +18,7 @@ export default class App extends Component {
     search: '',
     error: null,
     selectedImgURL: '',
+    selectedLowQImgUrl: '',
     isModalOpen: false,
     hadleImageClick: e => {
       if (e.target.nodeName !== 'IMG') {
@@ -85,9 +87,11 @@ export default class App extends Component {
     e.preventDefault();
 
     const fullImgLink = e.target.getAttribute('data-large');
+    const lowSrc = e.target.getCssValue('src');
 
     this.setState({
       selectedImgURL: fullImgLink,
+      selectedLowQImgUrl: lowSrc,
       isModalOpen: true,
     });
   };
@@ -106,6 +110,7 @@ export default class App extends Component {
       selectedImgURL,
       isModalOpen,
       hadleImageClick,
+      selectedLowQImgUrl,
     } = this.state;
 
     return (
@@ -124,7 +129,12 @@ export default class App extends Component {
 
         {isModalOpen && (
           <Modal onClose={this.toggleModal}>
-            <img src={selectedImgURL} alt="fullsizeImage"></img>
+            <img
+              src={selectedLowQImgUrl}
+              data-src={selectedImgURL}
+              alt="fullsizeImage"
+              className="lazyload blur-up"
+            ></img>
           </Modal>
         )}
 
