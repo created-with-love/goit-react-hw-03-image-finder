@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './Searchbar.css';
+import { error } from '@pnotify/core';
+import '@pnotify/core/dist/BrightTheme.css';
+import '@pnotify/core/dist/PNotify.css';
 
 export default class Searchbar extends Component {
   state = {
@@ -13,9 +16,14 @@ export default class Searchbar extends Component {
   };
 
   handleSubmit = e => {
+    const { query } = this.state;
     e.preventDefault();
+    if (!query) {
+      error('Search field is empty!');
+      return;
+    }
 
-    this.props.onSubmit(this.state.query);
+    this.props.onSubmit(query);
     this.setState({ query: '' });
   };
 
