@@ -100,6 +100,10 @@ export default class App extends Component {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
+
+    if (this.state.isModalOpen) {
+      document.body.style.overflowY = 'hidden';
+    }
   };
 
   render() {
