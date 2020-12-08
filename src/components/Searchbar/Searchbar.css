@@ -118,6 +118,7 @@
   }
 
   .Searchbar {
-    width: 100%;
+    min-width: 100%;
+    padding: 8px 18px 8px 18px;
   }
 }
