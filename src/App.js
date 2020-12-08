@@ -7,6 +7,8 @@ import fetchGallery from './services/gallery-service';
 import ImageGallery from './components/ImageGallery';
 import Section from './components/Section';
 import Modal from './components/Modal';
+import authContext from './components/Context';
+import 'lazysizes';
 
 export default class App extends Component {
   state = {
@@ -16,7 +18,20 @@ export default class App extends Component {
     search: '',
     error: null,
     selectedImgURL: '',
+    selectedLowQImgUrl: '',
     isModalOpen: false,
+    hadleImageClick: e => {
+      if (e.target.nodeName !== 'IMG') {
+        return;
+      }
+
+      e.preventDefault();
+      const fullImgLink = e.target.getAttribute('data-large');
+      this.setState({
+        selectedImgURL: fullImgLink,
+        isModalOpen: true,
+      });
+    },
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -72,9 +87,11 @@ export default class App extends Component {
     e.preventDefault();
 
     const fullImgLink = e.target.getAttribute('data-large');
+    const lowSrc = e.target.getAttribute('src');
 
     this.setState({
       selectedImgURL: fullImgLink,
+      selectedLowQImgUrl: lowSrc,
       isModalOpen: true,
     });
   };
@@ -92,6 +109,8 @@ export default class App extends Component {
       isLoading,
       selectedImgURL,
       isModalOpen,
+      hadleImageClick,
+      selectedLowQImgUrl,
     } = this.state;
 
     return (
@@ -104,13 +123,18 @@ export default class App extends Component {
           </Section>
         )}
 
-        {search && (
-          <ImageGallery gallery={gallery} onClick={this.hadleImageClick} />
-        )}
+        <authContext.Provider value={hadleImageClick}>
+          {search && <ImageGallery gallery={gallery} />}
+        </authContext.Provider>
 
         {isModalOpen && (
           <Modal onClose={this.toggleModal}>
-            <img src={selectedImgURL} alt="fullsizeImage"></img>
+            <img
+              src={selectedLowQImgUrl}
+              data-src={selectedImgURL}
+              alt="fullsizeImage"
+              className="lazyload blur-up"
+            ></img>
           </Modal>
         )}
 
