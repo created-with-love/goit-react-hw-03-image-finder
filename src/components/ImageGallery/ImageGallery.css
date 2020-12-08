@@ -1,6 +1,3 @@
-/*
- * Стили компонента ImageGallery
- */
 .ImageGallery {
   display: grid;
   max-width: calc(100vw - 48px);
@@ -12,4 +9,14 @@
   list-style: none;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (max-width: 355px) {
+  .ImageGallery {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
 }

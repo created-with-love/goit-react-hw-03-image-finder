@@ -27,3 +27,17 @@
   -webkit-filter: blur(0);
   filter: blur(0);
 }
+
+@media (max-width: 320px) {
+  .ImageGalleryItem-image {
+    /* max-width: 100%;
+    height: auto; */
+  }
+}
+
+@media (max-width: 320px) {
+  .ImageGalleryItem {
+    max-width: 100%;
+    margin: 0;
+  }
+}

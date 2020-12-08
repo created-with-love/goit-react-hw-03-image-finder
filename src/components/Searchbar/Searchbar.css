@@ -103,3 +103,21 @@
     margin-bottom: 10px;
   }
 }
+
+@media (max-width: 350px) {
+  .SearchForm-input::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .logobox__text {
+    color: black;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  .Searchbar {
+    width: 100%;
+  }
+}

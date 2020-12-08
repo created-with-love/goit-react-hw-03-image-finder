@@ -7,6 +7,10 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.Modal__backdrop body {
+  overflow-y: hidden;
+}
+
 .Modal__content {
   position: relative;
   top: 50%;
