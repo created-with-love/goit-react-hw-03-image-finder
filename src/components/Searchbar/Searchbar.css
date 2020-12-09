@@ -105,10 +105,20 @@
   }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 375px) {
   .SearchForm-input::placeholder {
     font-size: 16px;
     font-weight: 400;
+  }
+
+  .logobox__img {
+    display: none;
+  }
+
+  .logobox {
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 
   .logobox__text {
