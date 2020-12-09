@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './Searchbar.css';
-import { error } from '@pnotify/core';
-import '@pnotify/core/dist/BrightTheme.css';
-import '@pnotify/core/dist/PNotify.css';
-import logo from '../../icons/sns.svg';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { FaSearchengin } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
@@ -21,10 +19,6 @@ export default class Searchbar extends Component {
   handleSubmit = e => {
     const { query } = this.state;
     e.preventDefault();
-    if (!query) {
-      error('Search field is empty!');
-      return;
-    }
 
     this.props.onSubmit(query);
     this.setState({ query: '' });
@@ -39,7 +33,7 @@ export default class Searchbar extends Component {
           <IconContext.Provider
             value={{ color: 'black', size: '1.5em', className: 'react-icons' }}
           >
-            <div>
+            <div className="logobox__icon">
               <FaSearchengin />
             </div>
           </IconContext.Provider>
