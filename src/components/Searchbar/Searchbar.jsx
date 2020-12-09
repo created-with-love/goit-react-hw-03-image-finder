@@ -4,6 +4,8 @@ import { error } from '@pnotify/core';
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 import logo from '../../icons/sns.svg';
+import { FaSearchengin } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 
 export default class Searchbar extends Component {
   state = {
@@ -34,13 +36,13 @@ export default class Searchbar extends Component {
     return (
       <header className="Searchbar">
         <div className="logobox">
-          <img
-            src={logo}
-            alt="sns"
-            width="20"
-            className="logobox__img"
-            height="26"
-          />
+          <IconContext.Provider
+            value={{ color: 'black', size: '1.5em', className: 'react-icons' }}
+          >
+            <div>
+              <FaSearchengin />
+            </div>
+          </IconContext.Provider>
           <span className="logobox__text">Search and Save</span>
         </div>
         <form className="SearchForm" onSubmit={this.handleSubmit}>
