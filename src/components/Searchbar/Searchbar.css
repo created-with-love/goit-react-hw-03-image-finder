@@ -122,10 +122,6 @@
     font-weight: 400;
   }
 
-  .logobox__img {
-    max-height: 32px;
-  }
-
   .logobox {
     display: flex;
     width: 100%;
