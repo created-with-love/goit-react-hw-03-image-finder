@@ -7,8 +7,10 @@ import fetchGallery from './services/gallery-service';
 import ImageGallery from './components/ImageGallery';
 import Section from './components/Section';
 import Modal from './components/Modal';
+import DefaultEmptyField from './components/DefaultEmpyField';
 import authContext from './components/Context';
 import 'lazysizes';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default class App extends Component {
   state = {
@@ -68,6 +70,22 @@ export default class App extends Component {
         error: null,
       });
     }
+
+    if (!query) {
+      const notify = () =>
+        toast.info('🚀 Search field is empty!', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+        });
+      notify();
+
+      return;
+    }
   };
 
   onLoadMoreBtnClick = () => {
@@ -122,9 +140,25 @@ export default class App extends Component {
       selectedLowQImgUrl,
     } = this.state;
 
+    console.log(gallery);
+
     return (
       <>
         <Seachbar onSubmit={this.handleSubmit} />
+
+        {gallery.length === 0 && <DefaultEmptyField />}
+
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          draggablePercent={60}
+        />
 
         {isLoading && (
           <Section>
@@ -147,7 +181,11 @@ export default class App extends Component {
           </Modal>
         )}
 
-        <Section>{search && <Button onClick={this.fetchPictures} />}</Section>
+        <Section>
+          {search && gallery.length > 11 && (
+            <Button onClick={this.fetchPictures} />
+          )}
+        </Section>
       </>
     );
   }
