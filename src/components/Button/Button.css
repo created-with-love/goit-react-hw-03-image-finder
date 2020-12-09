@@ -31,5 +31,4 @@
 .Button:focus,
 .Button:active {
   outline: none;
-  transform: scale(1.2);
 }

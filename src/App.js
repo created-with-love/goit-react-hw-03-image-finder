@@ -72,10 +72,15 @@ export default class App extends Component {
 
   onLoadMoreBtnClick = () => {
     if (this.state.currentPage > 2) {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
+      const options = {
+        top: null,
         behavior: 'smooth',
-      });
+      };
+
+      options.top = window.pageYOffset + document.documentElement.clientHeight;
+      setTimeout(() => {
+        window.scrollTo(options);
+      }, 1000);
     }
   };
 
@@ -142,9 +147,7 @@ export default class App extends Component {
           </Modal>
         )}
 
-        <Section>
-          {!isLoading && search && <Button onClick={this.fetchPictures} />}
-        </Section>
+        <Section>{search && <Button onClick={this.fetchPictures} />}</Section>
       </>
     );
   }
