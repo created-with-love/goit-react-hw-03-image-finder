@@ -34,7 +34,13 @@ export default class Searchbar extends Component {
     return (
       <header className="Searchbar">
         <div className="logobox">
-          <img src={logo} alt="sns" width="20" className="logobox__img" />
+          <img
+            src={logo}
+            alt="sns"
+            width="20"
+            className="logobox__img"
+            height="26"
+          />
           <span className="logobox__text">Search and Save</span>
         </div>
         <form className="SearchForm" onSubmit={this.handleSubmit}>
