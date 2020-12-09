@@ -4,6 +4,10 @@
   position: sticky;
   z-index: 1100;
   display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   justify-content: space-evenly;
   align-items: center;
   min-height: 64px;
@@ -98,6 +102,8 @@
   .Searchbar {
     flex-wrap: wrap;
     flex-direction: column;
+    -webkit-flex-wrap: wrap;
+    -webkit-flex-direction: column;
   }
 
   .logobox {
