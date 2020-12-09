@@ -83,6 +83,10 @@
 
 .logobox {
   display: inline-flex;
+  /* display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex; */
   justify-content: center;
   align-content: center;
   margin-right: 15px;
@@ -119,11 +123,11 @@
   }
 
   .logobox__img {
-    display: none;
+    max-height: 32px;
   }
 
   .logobox {
-    display: block;
+    display: flex;
     width: 100%;
     text-align: center;
   }
