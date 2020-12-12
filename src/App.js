@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import 'lazysizes';
+import { ToastContainer, toast } from 'react-toastify';
 import LoaderSpinner from './components/Loader';
 import Seachbar from './components/Searchbar';
 import Button from './components/Button';
@@ -9,8 +11,6 @@ import Section from './components/Section';
 import Modal from './components/Modal';
 import DefaultEmptyField from './components/DefaultEmpyField';
 import authContext from './components/Context';
-import 'lazysizes';
-import { ToastContainer, toast } from 'react-toastify';
 
 export default class App extends Component {
   state = {
