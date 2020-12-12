@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './Searchbar.css';
-import 'react-toastify/dist/ReactToastify.css';
-
 import { FaSearchengin } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
+
+import './Searchbar.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class Searchbar extends Component {
   state = {
